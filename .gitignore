@@ -5,3 +5,4 @@
 # Ignorar cosas privadas y para depurar
 /private/
 /src/debug/
+game.log
