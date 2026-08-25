@@ -24,6 +24,10 @@ Globals="*uid://dsewn4nymm5f2"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-logger/plugin.cfg", "res://addons/plugin_refresher/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
