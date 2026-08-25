@@ -1,0 +1,7 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Ignorar cosas privadas y para depurar
+/private/
+/src/debug/
