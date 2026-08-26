@@ -1,5 +1,15 @@
 extends Node
 
+
+func quit_game() -> void:
+	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+	exit()
+
+
+func exit(exit_code: int = 0) -> void:
+	get_tree().quit(exit_code)
+
+
 func panic(message: String = "") -> void:
 	if message.is_empty():
 		message = "Panic!"
@@ -7,7 +17,7 @@ func panic(message: String = "") -> void:
 		message = "Panic reason: %s" % message
 	push_error(message)
 	print_stack()
-	get_tree().quit(1)
+	exit(1)
 
 
 func todo(message: String = "") -> void:
