@@ -7,7 +7,6 @@ extends CharacterBody2D
 @export var sprite: Sprite2D
 
 
-
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector(
 		InputActions.MOVE_LEFT,
@@ -19,5 +18,7 @@ func _physics_process(delta: float) -> void:
 		velocity = direction * speed
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
+
+	Log.info("%.2v" % global_position)
 
 	move_and_slide()
