@@ -1,4 +1,5 @@
 class_name InputActions
+
 const UI_ACCEPT := &"ui_accept"
 const UI_SELECT := &"ui_select"
 const UI_CANCEL := &"ui_cancel"

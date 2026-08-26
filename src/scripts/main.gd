@@ -1,4 +1,5 @@
-class_name Root extends Node
+class_name Root
+extends Node
 
 
 const PLAYER_SCENE_UID := "uid://bbiwoqwac0ted"
@@ -23,6 +24,10 @@ func _ready() -> void:
 	load_level(TEST_LEVEL)
 
 
+func load_level(level_scene_uid: String) -> void:
+	_deferred_load_level.call_deferred(level_scene_uid)
+
+
 func _init_player() -> void:
 	var player_scene: PackedScene = ResourceLoader.load(PLAYER_SCENE_UID, "PackedScene")
 	assert(player_scene != null, "No se ha podido cargar la escena del jugador, ¿por qué?")
@@ -31,10 +36,6 @@ func _init_player() -> void:
 	assert(player != null, "La escena con UID %s no hereda de `Player`" % PLAYER_SCENE_UID)
 
 	entity_root.add_child(player)
-
-
-func load_level(level_scene_uid: String) -> void:
-	_deferred_load_level.call_deferred(level_scene_uid)
 
 
 func _deferred_load_level(level_scene_uid: String) -> void:
