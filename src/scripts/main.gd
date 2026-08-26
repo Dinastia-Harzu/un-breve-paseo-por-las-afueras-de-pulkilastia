@@ -21,6 +21,11 @@ var _current_level: Level2D = null
 
 func _ready() -> void:
 	_init_player()
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed(InputActions.DEBUG_QUIT):
+		Globals.quit_game()
 	load_level(TEST_LEVEL)
 
 

@@ -9,7 +9,12 @@ extends CharacterBody2D
 
 
 func _physics_process(delta: float) -> void:
-	var direction := Input.get_vector(InputActions.LEFT, InputActions.RIGHT, InputActions.UP, InputActions.DOWN)
+	var direction := Input.get_vector(
+		InputActions.MOVE_LEFT,
+		InputActions.MOVE_RIGHT,
+		InputActions.MOVE_UP,
+		InputActions.MOVE_DOWN
+	)
 	if direction:
 		velocity = direction * speed
 	else:
