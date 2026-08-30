@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bofcg6ugbxmfu"]
+
+[ext_resource type="Script" uid="uid://bftatphxua6wa" path="res://addons/godot-logger/scripts/log_output.gd" id="1_2pva2"]
+[ext_resource type="Script" uid="uid://b0bkh8kqb8ae7" path="res://src/scripts/debug/debug_text_overlay.gd" id="1_ydwpj"]
+
+[node name="DebugTextOverlay" type="Control" unique_id=817584208]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+script = ExtResource("1_ydwpj")
+
+[node name="LoggerBackground" type="ColorRect" parent="." unique_id=402074293]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.6
+anchor_right = 0.4
+anchor_bottom = 1.0
+grow_vertical = 0
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="LogOutput" type="RichTextLabel" parent="LoggerBackground" unique_id=1436912254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+bbcode_enabled = true
+scroll_active = false
+scroll_following = true
+script = ExtResource("1_2pva2")
+format_text = "[{hour}:{minute}:{second}][{level}] {text}"
+colors = {
+1: Color(1, 1, 1, 1),
+2: Color(0.24705882, 0.56078434, 0.74509805, 1),
+4: Color(1, 1, 0, 1),
+8: Color(1, 0, 0, 1),
+16: Color(1, 0, 0, 1)
+}
+metadata/_custom_type_script = "uid://bftatphxua6wa"
+
+[node name="FPSBackground" type="ColorRect" parent="." unique_id=561460901]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.08
+anchor_bottom = 0.05
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="FPS" type="Label" parent="FPSBackground" unique_id=810156887]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 12
