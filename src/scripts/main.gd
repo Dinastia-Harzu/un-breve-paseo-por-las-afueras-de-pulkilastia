@@ -47,20 +47,25 @@ func _deferred_load_level(level_scene_uid: String) -> void:
 	if Globals.check(_current_level):
 		_current_level.queue_free()
 		_current_level = null
-
-	await get_tree().process_frame
+		await get_tree().process_frame
 
 	var new_level_packed: PackedScene = ResourceLoader.load(level_scene_uid, "PackedScene")
 	if not Globals.check(new_level_packed, "No se ha podido cargar lo que sea esto: %s" % level_scene_uid):
 		return
 
-	_current_level = new_level_packed.instantiate() as Level2D
-	if not Globals.check(_current_level, "Lo que sea que hayas pasado no hereda de `Level2D`"):
+	var new_level := new_level_packed.instantiate()
+
+	if not Globals.check(new_level, "No se ha podido instanciar el nivel con UID %s" % level_scene_uid):
 		return
 
-	level_root.add_child(_current_level)
+	if not new_level is Level2D:
+		new_level.free()
+		push_error("Lo que sea que hayas pasado no hereda de `Level2D`")
+		return
 
-	await get_tree().process_frame
+	_current_level = new_level_packed.instantiate() as Level2D
+
+	level_root.add_child(_current_level)
 
 	_place_player_at_level_spawn()
 	_setup_level_camera()
