@@ -6,6 +6,7 @@
 [node name="Root" type="Node" unique_id=726041314]
 process_mode = 3
 script = ExtResource("1_kkvs4")
+debug_mode = true
 
 [node name="Systems" type="Node" parent="." unique_id=918751139]
 
@@ -82,6 +83,7 @@ layer = 128
 
 [node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=341310456]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

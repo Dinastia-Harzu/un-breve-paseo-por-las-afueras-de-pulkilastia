@@ -5,6 +5,13 @@ extends Node
 const PLAYER_SCENE_UID := "uid://bbiwoqwac0ted"
 const TEST_LEVEL := "uid://ck5t7o3afxyuk"
 
+@export var debug_mode := false:
+	set(value):
+		debug_mode = value
+		if not is_node_ready():
+			return
+		debug_root.visible = value
+
 var player: Player = null
 
 var _current_level: Level2D = null
@@ -20,6 +27,8 @@ var _current_level: Level2D = null
 
 
 func _ready() -> void:
+	debug_root.visible = debug_mode
+
 	_init_player()
 	load_level(TEST_LEVEL)
 
@@ -27,6 +36,8 @@ func _ready() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed(InputActions.DEBUG_QUIT):
 		Globals.quit_game()
+	elif event.is_action_pressed(InputActions.DEBUG_TOGGLE):
+		debug_mode = not debug_mode
 
 
 func load_level(level_scene_uid: String) -> void:
