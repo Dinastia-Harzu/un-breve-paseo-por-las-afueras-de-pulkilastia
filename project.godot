@@ -25,7 +25,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
 [editor_plugins]
@@ -74,6 +74,10 @@ debug_quit={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [layer_names]
 
 2d_render/layer_1="World"
@@ -86,9 +90,14 @@ debug_quit={
 
 3d/physics_engine="Jolt Physics"
 
+[plugins]
+
+log/file/log_file_write=false
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 textures/default_filters/anisotropic_filtering_level=0

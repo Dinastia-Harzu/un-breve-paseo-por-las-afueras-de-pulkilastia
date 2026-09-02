@@ -34,6 +34,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="VirtualJoystick" type="VirtualJoystick" parent="HUDLayer/HUDRoot" unique_id=1293174709]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+joystick_mode = 2
+action_left = &"move_left"
+action_right = &"move_right"
+action_up = &"move_up"
+action_down = &"move_down"
+visibility_mode = 1
+
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1531984551]
 process_mode = 2
 layer = 20
