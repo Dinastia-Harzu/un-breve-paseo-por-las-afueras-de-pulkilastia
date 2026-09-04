@@ -10,4 +10,3 @@ func _run() -> void:
 	for action_name in InputMap.get_actions():
 		var action_ident := action_name.replace(".", "__").replace("/", "__").to_upper()
 		script.store_line("const %s := &\"%s\"" % [action_ident, action_name])
-	pass
