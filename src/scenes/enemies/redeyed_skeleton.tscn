@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dlmv00yqcri85"]
+
+[ext_resource type="Script" uid="uid://c1swae47sxi4f" path="res://src/scripts/enemies/base/map_enemy.gd" id="1_scg0v"]
+[ext_resource type="Texture2D" uid="uid://ttvm8etgxgmh" path="res://assets/art/2d/spritesheets/skeleton-red_eyes-NESW.png" id="2_nmnxn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rwwbx"]
+
+[node name="RedeyedSkeleton" type="CharacterBody2D" unique_id=56744023]
+script = ExtResource("1_scg0v")
+metadata/_custom_type_script = "uid://c1swae47sxi4f"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1977073483]
+texture = ExtResource("2_nmnxn")
+region_enabled = true
+region_rect = Rect2(0, 64, 24, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=511885415]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_rwwbx")

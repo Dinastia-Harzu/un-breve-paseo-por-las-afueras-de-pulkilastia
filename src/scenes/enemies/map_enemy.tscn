@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bfd7w6v3dwre7"]
+
+[ext_resource type="Script" uid="uid://c1swae47sxi4f" path="res://src/scripts/enemies/base/map_enemy.gd" id="1_a6sn8"]
+
+[node name="MapEnemy" type="CharacterBody2D" unique_id=1309496707]
+collision_layer = 4
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_a6sn8")

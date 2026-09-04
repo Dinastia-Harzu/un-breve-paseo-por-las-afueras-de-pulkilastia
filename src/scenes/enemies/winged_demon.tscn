@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://66brd6fu0vts"]
+
+[ext_resource type="Script" uid="uid://c1swae47sxi4f" path="res://src/scripts/enemies/base/map_enemy.gd" id="1_mo1lu"]
+[ext_resource type="Texture2D" uid="uid://d0ao0317mu42o" path="res://assets/art/2d/spritesheets/walk - vanilla.png" id="2_tqg6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qncrf"]
+radius = 16.0
+
+[node name="WingedDemon" type="CharacterBody2D" unique_id=1945273480]
+script = ExtResource("1_mo1lu")
+metadata/_custom_type_script = "uid://c1swae47sxi4f"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=904820394]
+texture = ExtResource("2_tqg6b")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=944068262]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_qncrf")
