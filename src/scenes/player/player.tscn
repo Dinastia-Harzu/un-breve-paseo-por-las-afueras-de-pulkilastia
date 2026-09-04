@@ -6,10 +6,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwwbx"]
 radius = 7.071068
 
-[node name="Player" type="CharacterBody2D" unique_id=253209671 node_paths=PackedStringArray("sprite")]
+[node name="Player" type="CharacterBody2D" unique_id=253209671 node_paths=PackedStringArray("sprite", "remote_transform")]
+collision_layer = 2
+collision_mask = 269
 motion_mode = 1
 script = ExtResource("1_swhsd")
 sprite = NodePath("Sprite")
+remote_transform = NodePath("RemoteTransform2D")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1436506240]
 texture = ExtResource("2_qopur")
@@ -19,3 +22,5 @@ region_rect = Rect2(0, 6, 16, 22)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=953014364]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_rwwbx")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1492669013]
