@@ -43,8 +43,15 @@ folder_colors={
 "res://assets/audio/music/": "yellow",
 "res://assets/audio/sfx/": "teal",
 "res://private/": "gray",
-"res://src/": "blue"
+"res://src/": "blue",
+"res://src/resources/": "orange",
+"res://src/scenes/": "green"
 }
+
+[global_group]
+
+world_entities=""
+encounter_zones=""
 
 [input]
 
@@ -86,6 +93,8 @@ debug_toggle={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Interactable"
+2d_physics/layer_8="Solid"
+2d_physics/layer_9="Water"
 
 [physics]
 
