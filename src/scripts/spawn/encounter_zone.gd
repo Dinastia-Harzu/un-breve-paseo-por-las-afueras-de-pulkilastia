@@ -13,8 +13,7 @@ func _ready() -> void:
 	for spawner in get_children():
 		if spawner is Spawner:
 			spawner.available.connect(_on_available)
-			if spawner.can_spawn():
-				spawner.make_spawn()
+			_on_available(spawner)
 
 
 func _process(delta: float) -> void:
