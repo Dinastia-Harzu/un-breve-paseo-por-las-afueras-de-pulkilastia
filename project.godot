@@ -18,6 +18,7 @@ config/icon="res://assets/art/2d/sprites/icon.svg"
 [autoload]
 
 Globals="*uid://dsewn4nymm5f2"
+EventBus="*uid://d1q78lh5qiajm"
 
 [display]
 
@@ -30,7 +31,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/copy_scene_tree/plugin.cfg", "res://addons/godot-logger/plugin.cfg", "res://addons/plugin_refresher/plugin.cfg", "res://addons/scene_tree_printer/plugin.cfg")
+enabled=PackedStringArray("res://addons/copy_scene_tree/plugin.cfg", "res://addons/godot-logger/plugin.cfg", "res://addons/plugin_refresher/plugin.cfg")
 
 [file_customization]
 
