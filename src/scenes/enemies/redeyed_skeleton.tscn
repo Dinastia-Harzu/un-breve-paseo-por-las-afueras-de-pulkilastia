@@ -2,11 +2,16 @@
 
 [ext_resource type="Script" uid="uid://c1swae47sxi4f" path="res://src/scripts/enemies/base/map_enemy.gd" id="1_scg0v"]
 [ext_resource type="Texture2D" uid="uid://ttvm8etgxgmh" path="res://assets/art/2d/spritesheets/skeleton-red_eyes-NESW.png" id="2_nmnxn"]
+[ext_resource type="Resource" uid="uid://c3od7uuwv0ogr" path="res://src/resources/enemy_data/redeyed_skeleton.tres" id="2_qfiga"]
+[ext_resource type="Script" uid="uid://ep0hu6fhrxyr" path="res://src/scripts/components/encounter_triggerbox_component.gd" id="3_nmnxn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwwbx"]
+radius = 6.0827627
 
 [node name="RedeyedSkeleton" type="CharacterBody2D" unique_id=56744023]
+collision_layer = 4
 script = ExtResource("1_scg0v")
+enemy_data = ExtResource("2_qfiga")
 metadata/_custom_type_script = "uid://c1swae47sxi4f"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1977073483]
@@ -14,6 +19,16 @@ texture = ExtResource("2_nmnxn")
 region_enabled = true
 region_rect = Rect2(0, 64, 24, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=511885415]
-position = Vector2(0, 8)
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=511885415]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_rwwbx")
+
+[node name="EncounterTriggerboxComponent" type="Area2D" parent="." unique_id=1484975256]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_nmnxn")
+metadata/_custom_type_script = "uid://ep0hu6fhrxyr"
+
+[node name="CollisionBox" type="CollisionShape2D" parent="EncounterTriggerboxComponent" unique_id=341753485]
+position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_rwwbx")

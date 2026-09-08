@@ -93,6 +93,7 @@ func _deferred_load_level(level_scene_uid: String) -> void:
 
 func _connect_signals() -> void:
 	EventBus.spawn_enemy.connect(_on_spawn_enemy)
+	EventBus.trigger_encounter.connect(_on_trigger_encounter)
 
 
 func _place_player_at_level_spawn() -> void:
@@ -116,3 +117,8 @@ func _setup_level_camera() -> void:
 
 func _on_spawn_enemy(enemy: MapEnemy) -> void:
 	entity_root.add_child(enemy, true)
+
+
+func _on_trigger_encounter(enemy: MapEnemy) -> void:
+	Log.debug("Batalla: %s vs. %s" % [player, enemy])
+	enemy.queue_free()

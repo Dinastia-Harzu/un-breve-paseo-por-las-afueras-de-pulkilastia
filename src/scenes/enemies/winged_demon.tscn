@@ -2,11 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c1swae47sxi4f" path="res://src/scripts/enemies/base/map_enemy.gd" id="1_mo1lu"]
 [ext_resource type="Texture2D" uid="uid://d0ao0317mu42o" path="res://assets/art/2d/spritesheets/walk - vanilla.png" id="2_tqg6b"]
+[ext_resource type="Script" uid="uid://ep0hu6fhrxyr" path="res://src/scripts/components/encounter_triggerbox_component.gd" id="3_tqg6b"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qncrf"]
-radius = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_fnj6u"]
+radius = 12.0415945
 
 [node name="WingedDemon" type="CharacterBody2D" unique_id=1945273480]
+collision_layer = 4
+collision_mask = 257
 script = ExtResource("1_mo1lu")
 metadata/_custom_type_script = "uid://c1swae47sxi4f"
 
@@ -15,6 +18,15 @@ texture = ExtResource("2_tqg6b")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=944068262]
-position = Vector2(0, 9)
-shape = SubResource("CircleShape2D_qncrf")
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=944068262]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_fnj6u")
+
+[node name="EncounterTriggerboxComponent" type="Area2D" parent="." unique_id=567673971]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_tqg6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EncounterTriggerboxComponent" unique_id=1202373667]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_fnj6u")
