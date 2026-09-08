@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://c3od7uuwv0ogr"]
+
+[ext_resource type="Script" uid="uid://bi300aqndq2c0" path="res://src/scripts/resources/enemy_data.gd" id="1_hfm3p"]
+
+[resource]
+script = ExtResource("1_hfm3p")
+name = "Redeyed Skeleton"
+max_hp = 10
+offense = 5
+defense = 3
+intelligence = 1
+constitution = 2
+speed = 4
