@@ -14,12 +14,15 @@ process_mode = 1
 
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=760215065]
 unique_name_in_owner = true
+y_sort_enabled = true
 
 [node name="LevelRoot" type="Node2D" parent="World" unique_id=288471181]
 unique_name_in_owner = true
+y_sort_enabled = true
 
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=1625041676]
 unique_name_in_owner = true
+y_sort_enabled = true
 
 [node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1756992226]
 process_mode = 1

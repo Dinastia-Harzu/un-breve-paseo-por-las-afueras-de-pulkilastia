@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bg537wnpa6c3n" path="res://assets/art/2d/spritesheets/character.png" id="2_qopur"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx3ie"]
-radius = 5.0
+radius = 6.0
 
 [node name="Player" type="CharacterBody2D" unique_id=253209671 node_paths=PackedStringArray("sprite", "remote_transform")]
 collision_layer = 2
@@ -16,12 +16,13 @@ sprite = NodePath("Sprite")
 remote_transform = NodePath("RemoteTransform2D")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1436506240]
+position = Vector2(0, -8)
 texture = ExtResource("2_qopur")
 region_enabled = true
 region_rect = Rect2(0, 6, 16, 22)
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=953014364]
-position = Vector2(0, 7)
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_cx3ie")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1492669013]

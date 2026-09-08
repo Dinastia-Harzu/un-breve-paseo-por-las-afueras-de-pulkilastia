@@ -14,15 +14,17 @@ script = ExtResource("1_mo1lu")
 metadata/_custom_type_script = "uid://c1swae47sxi4f"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=904820394]
+position = Vector2(0, -18)
 texture = ExtResource("2_tqg6b")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 48)
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=944068262]
-position = Vector2(0, 12)
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_fnj6u")
 
 [node name="EncounterTriggerboxComponent" type="Area2D" parent="." unique_id=567673971]
+position = Vector2(0, -18)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_tqg6b")
