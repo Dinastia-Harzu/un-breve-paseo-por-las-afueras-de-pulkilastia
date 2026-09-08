@@ -15,17 +15,3 @@ func _physics_process(delta: float) -> void:
 
 			var tile_data := elevate_layer.get_cell_tile_data(mapped)
 			entity.set_collision_mask_value(LayerNames.Physics2D.WATER, not (tile_data and tile_data.get_custom_data("elevate")))
-
-	# var is_elevated := _check_elevated()
-	#
-	# _set_collision_mask_and_layer(LayerNames.Physics2D.WATER, !is_elevated)
-
-
-func _check_elevated() -> bool:
-	return true
-
-
-func _set_collision_mask_and_layer(layer: int, value: bool) -> void:
-	pass
-	# body.set_collision_layer_value(layer, value)
-	# body.set_collision_mask_value(layer, value)

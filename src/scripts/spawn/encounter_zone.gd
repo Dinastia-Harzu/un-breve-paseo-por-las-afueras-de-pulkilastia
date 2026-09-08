@@ -15,7 +15,6 @@ func _ready() -> void:
 			spawner.available.connect(_on_available)
 			if spawner.can_spawn():
 				spawner.make_spawn()
-			# _spawners.append(spawner)
 
 
 func _process(delta: float) -> void:
@@ -36,7 +35,6 @@ func _process(delta: float) -> void:
 
 	while not fulfilled_spawners.is_empty():
 		_available_spawners.remove_at(fulfilled_spawners.pop_back())
-	# _available_spawners = _available_spawners.filter(func(s: Spawner): s.can_spawn())
 
 
 func _check_spawner_visible(spawner_position: Vector2) -> bool:

@@ -1,21 +1,13 @@
 [gd_scene format=3 uid="uid://cml180sj3hcwe"]
 
 [ext_resource type="Script" uid="uid://cl1en36arovfl" path="res://src/scripts/main.gd" id="1_kkvs4"]
-[ext_resource type="Script" uid="uid://ddpw2wo6xrinv" path="res://src/scripts/systems/encounter_spawning_system.gd" id="2_5dlwx"]
 [ext_resource type="PackedScene" uid="uid://bofcg6ugbxmfu" path="res://src/scenes/debug/debug_text_overlay.tscn" id="2_rr2wm"]
 
 [node name="Root" type="Node" unique_id=726041314]
 process_mode = 3
 script = ExtResource("1_kkvs4")
-debug_mode = true
 
 [node name="Systems" type="Node" parent="." unique_id=918751139]
-
-[node name="EncounterSpawnerSystem" type="Node" parent="Systems" unique_id=1593977204 node_paths=PackedStringArray("entity_root")]
-unique_name_in_owner = true
-script = ExtResource("2_5dlwx")
-entity_root = NodePath("../../World/EntityRoot")
-metadata/_custom_type_script = "uid://ddpw2wo6xrinv"
 
 [node name="World" type="Node2D" parent="." unique_id=648427866]
 process_mode = 1

@@ -25,15 +25,12 @@ var _current_level: Level2D = null
 @onready var transition_root: Control = %TransitionRoot
 @onready var debug_root: Control = %DebugRoot
 
-# @onready var encounter_spawner_system: EncounterSpawnerSystem = %EncounterSpawnerSystem
-
 
 func _ready() -> void:
 	debug_root.visible = debug_mode
 
 	_init_player()
 	load_level(TEST_LEVEL)
-	# _init_systems.call_deferred()
 
 	_connect_signals()
 
@@ -85,10 +82,6 @@ func _deferred_load_level(level_scene_uid: String) -> void:
 
 	_place_player_at_level_spawn()
 	_setup_level_camera()
-
-
-# func _init_systems() -> void:
-# 	encounter_spawner_system.watch_encounter_zones(_current_level.get_encounter_zones())
 
 
 func _connect_signals() -> void:
