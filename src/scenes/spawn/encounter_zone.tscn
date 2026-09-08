@@ -2,7 +2,5 @@
 
 [ext_resource type="Script" uid="uid://30p071i4my2m" path="res://src/scripts/spawn/encounter_zone.gd" id="1_qeous"]
 
-[node name="EncounterZone" type="Area2D" unique_id=981993234]
-collision_layer = 0
-collision_mask = 0
+[node name="EncounterZone" type="Node2D" unique_id=1889924209]
 script = ExtResource("1_qeous")

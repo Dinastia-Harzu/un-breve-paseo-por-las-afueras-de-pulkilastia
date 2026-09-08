@@ -4,29 +4,26 @@
 [ext_resource type="TileSet" uid="uid://bgfpdb38ow0u8" path="res://src/resources/tilesets/test_level_tileset.tres" id="2_7k28k"]
 [ext_resource type="PackedScene" uid="uid://deppadoa7c8j0" path="res://src/scenes/player/spawn.tscn" id="4_7k28k"]
 [ext_resource type="Script" uid="uid://b6nk2tbf637tn" path="res://src/scripts/components/elevate_on_map_component.gd" id="5_3jmop"]
-[ext_resource type="Script" uid="uid://30p071i4my2m" path="res://src/scripts/spawn/encounter_zone.gd" id="5_ultnw"]
 [ext_resource type="PackedScene" uid="uid://dlmv00yqcri85" path="res://src/scenes/enemies/redeyed_skeleton.tscn" id="6_43lcp"]
 [ext_resource type="PackedScene" uid="uid://66brd6fu0vts" path="res://src/scenes/enemies/winged_demon.tscn" id="7_xvx1o"]
+[ext_resource type="PackedScene" uid="uid://dab1hl2200sb2" path="res://src/scenes/spawn/spawner.tscn" id="8_43lcp"]
 [ext_resource type="Script" uid="uid://cbprvqjdaub68" path="res://src/scripts/resources/encounter_zone_data.gd" id="8_u0x3y"]
 [ext_resource type="PackedScene" uid="uid://diwfypcwgcs18" path="res://src/scenes/spawn/encounter_zone.tscn" id="8_ultnw"]
 
 [sub_resource type="Environment" id="Environment_rwwbx"]
 
-[sub_resource type="Resource" id="Resource_32aa5"]
+[sub_resource type="Resource" id="Resource_rwwbx"]
 script = ExtResource("8_u0x3y")
 max_enemies_alive = 5
 time_between_spawns = 5.0
 enemies = Array[PackedScene]([ExtResource("6_43lcp"), ExtResource("7_xvx1o")])
 metadata/_custom_type_script = "uid://cbprvqjdaub68"
 
-[sub_resource type="Resource" id="Resource_5dlwx"]
+[sub_resource type="Resource" id="Resource_uvtlq"]
 script = ExtResource("8_u0x3y")
 max_enemies_alive = 1
 enemies = Array[PackedScene]([ExtResource("6_43lcp")])
 metadata/_custom_type_script = "uid://cbprvqjdaub68"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tyrh"]
-size = Vector2(58, 82)
 
 [node name="TestLevel" type="Node2D" unique_id=2098595182 node_paths=PackedStringArray("_player_camera", "_player_spawn")]
 script = ExtResource("1_yshsi")
@@ -65,24 +62,31 @@ environment = SubResource("Environment_rwwbx")
 
 [node name="SpawnAreas" type="Node2D" parent="." unique_id=1388378247]
 
-[node name="EncounterZone" type="Area2D" parent="SpawnAreas" unique_id=2072448345]
-position = Vector2(412, 163)
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("5_ultnw")
-_data = SubResource("Resource_32aa5")
-metadata/_custom_type_script = "uid://30p071i4my2m"
+[node name="EncounterZone" parent="SpawnAreas" unique_id=1889924209 node_paths=PackedStringArray("_debug_camera") instance=ExtResource("8_ultnw")]
+position = Vector2(425, 163)
+_debug_camera = NodePath("../../LevelObjects/PlayerCamera")
+_data = SubResource("Resource_rwwbx")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpawnAreas/EncounterZone" unique_id=1144948906]
-polygon = PackedVector2Array(-48, -68, 38, -68, 39, -40, 58, -23, 86, -22, 87, 9, 100, 14, 99, 61, -41, 60, -59, 46, -62, -50)
-disabled = true
+[node name="Spawner" parent="SpawnAreas/EncounterZone" unique_id=1829441754 instance=ExtResource("8_43lcp")]
 
-[node name="EncounterZone2" parent="SpawnAreas" unique_id=981993234 instance=ExtResource("8_ultnw")]
-position = Vector2(135, 283)
-_data = SubResource("Resource_5dlwx")
+[node name="Spawner2" parent="SpawnAreas/EncounterZone" unique_id=234054361 instance=ExtResource("8_43lcp")]
+position = Vector2(-54, 45)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnAreas/EncounterZone2" unique_id=72798606]
-shape = SubResource("RectangleShape2D_3tyrh")
+[node name="Spawner3" parent="SpawnAreas/EncounterZone" unique_id=1120142373 instance=ExtResource("8_43lcp")]
+position = Vector2(-58, -46)
+
+[node name="Spawner4" parent="SpawnAreas/EncounterZone" unique_id=979515486 instance=ExtResource("8_43lcp")]
+position = Vector2(21, -57)
+
+[node name="Spawner5" parent="SpawnAreas/EncounterZone" unique_id=343104781 instance=ExtResource("8_43lcp")]
+position = Vector2(77, 50)
+
+[node name="EncounterZone2" parent="SpawnAreas" unique_id=1536158559 node_paths=PackedStringArray("_debug_camera") instance=ExtResource("8_ultnw")]
+position = Vector2(137, 284)
+_debug_camera = NodePath("../../LevelObjects/PlayerCamera")
+_data = SubResource("Resource_uvtlq")
+
+[node name="Spawner" parent="SpawnAreas/EncounterZone2" unique_id=617224427 instance=ExtResource("8_43lcp")]
 
 [node name="Components" type="Node" parent="." unique_id=1731138434]
 

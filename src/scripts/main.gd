@@ -25,7 +25,7 @@ var _current_level: Level2D = null
 @onready var transition_root: Control = %TransitionRoot
 @onready var debug_root: Control = %DebugRoot
 
-@onready var encounter_spawner_system: EncounterSpawnerSystem = %EncounterSpawnerSystem
+# @onready var encounter_spawner_system: EncounterSpawnerSystem = %EncounterSpawnerSystem
 
 
 func _ready() -> void:
@@ -33,7 +33,9 @@ func _ready() -> void:
 
 	_init_player()
 	load_level(TEST_LEVEL)
-	_init_systems.call_deferred()
+	# _init_systems.call_deferred()
+
+	_connect_signals()
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -77,7 +79,7 @@ func _deferred_load_level(level_scene_uid: String) -> void:
 		push_error("Lo que sea que hayas pasado no hereda de `Level2D`")
 		return
 
-	_current_level = new_level_packed.instantiate() as Level2D
+	_current_level = new_level as Level2D
 
 	level_root.add_child(_current_level)
 
@@ -85,8 +87,12 @@ func _deferred_load_level(level_scene_uid: String) -> void:
 	_setup_level_camera()
 
 
-func _init_systems() -> void:
-	encounter_spawner_system.watch_encounter_zones(_current_level.get_encounter_zones())
+# func _init_systems() -> void:
+# 	encounter_spawner_system.watch_encounter_zones(_current_level.get_encounter_zones())
+
+
+func _connect_signals() -> void:
+	EventBus.spawn_enemy.connect(_on_spawn_enemy)
 
 
 func _place_player_at_level_spawn() -> void:
@@ -106,3 +112,7 @@ func _setup_level_camera() -> void:
 		return
 
 	player.assign_camera(level_camera)
+
+
+func _on_spawn_enemy(enemy: MapEnemy) -> void:
+	entity_root.add_child(enemy, true)
