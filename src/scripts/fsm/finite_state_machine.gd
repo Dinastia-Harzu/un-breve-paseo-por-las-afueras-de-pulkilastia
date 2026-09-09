@@ -13,8 +13,7 @@ func _ready() -> void:
 	for state_node: FSMNode in find_children("*", "FSMNode"):
 		state_node.finished.connect(_transition_to_next_state)
 
-	await owner.ready
-	state.enter("")
+	_start.call_deferred()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -27,6 +26,11 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	state.physics_update(delta)
+
+
+func _start() -> void:
+	await owner.ready
+	state.enter("")
 
 
 func _transition_to_next_state(target_state_path: NodePath, data := {}) -> void:

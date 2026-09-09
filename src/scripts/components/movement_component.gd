@@ -14,7 +14,6 @@ func _ready() -> void:
 		_movement = _accelerationless_movement
 
 
-
 func move_towards(direction: Vector2, max_speed: float, delta: float) -> void:
 	body.velocity = _movement.call(direction, max_speed, delta)
 	body.move_and_slide()
