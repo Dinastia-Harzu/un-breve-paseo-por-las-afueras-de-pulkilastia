@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 @export var sprite: Sprite2D
 @export var remote_transform: RemoteTransform2D
+@export var movement_component: MovementComponent
 
 
 func _ready() -> void:
@@ -20,12 +21,7 @@ func _physics_process(delta: float) -> void:
 		InputActions.MOVE_UP,
 		InputActions.MOVE_DOWN
 	)
-	if direction:
-		velocity = direction * speed
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, speed)
-
-	move_and_slide()
+	movement_component.move_towards(direction, speed, delta)
 
 
 func assign_camera(camera: Camera2D) -> void:

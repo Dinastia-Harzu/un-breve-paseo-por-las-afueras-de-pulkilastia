@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1swae47sxi4f" path="res://src/scripts/enemies/base/map_enemy.gd" id="1_mo1lu"]
 [ext_resource type="Texture2D" uid="uid://d0ao0317mu42o" path="res://assets/art/2d/spritesheets/walk - vanilla.png" id="2_tqg6b"]
 [ext_resource type="Script" uid="uid://ep0hu6fhrxyr" path="res://src/scripts/components/encounter_triggerbox_component.gd" id="3_tqg6b"]
+[ext_resource type="Script" uid="uid://bs64v0udcw2ei" path="res://src/scripts/components/movement_component.gd" id="9_4moxn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fnj6u"]
 radius = 12.0415945
@@ -32,3 +33,10 @@ script = ExtResource("3_tqg6b")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EncounterTriggerboxComponent" unique_id=1202373667]
 position = Vector2(0, 12)
 shape = SubResource("CircleShape2D_fnj6u")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=204751113 node_paths=PackedStringArray("body")]
+script = ExtResource("9_4moxn")
+body = NodePath("..")
+acceleration = -1.0
+friction = -1.0
+metadata/_custom_type_script = "uid://bs64v0udcw2ei"

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ttvm8etgxgmh" path="res://assets/art/2d/spritesheets/skeleton-red_eyes-NESW.png" id="2_nmnxn"]
 [ext_resource type="Resource" uid="uid://c3od7uuwv0ogr" path="res://src/resources/enemy_data/redeyed_skeleton.tres" id="2_qfiga"]
 [ext_resource type="Script" uid="uid://ep0hu6fhrxyr" path="res://src/scripts/components/encounter_triggerbox_component.gd" id="3_nmnxn"]
+[ext_resource type="Script" uid="uid://bs64v0udcw2ei" path="res://src/scripts/components/movement_component.gd" id="10_haxr1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwwbx"]
 radius = 6.0827627
@@ -34,3 +35,10 @@ metadata/_custom_type_script = "uid://ep0hu6fhrxyr"
 [node name="CollisionBox" type="CollisionShape2D" parent="EncounterTriggerboxComponent" unique_id=341753485]
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_rwwbx")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1954890227 node_paths=PackedStringArray("body")]
+script = ExtResource("10_haxr1")
+body = NodePath("..")
+acceleration = -1.0
+friction = -1.0
+metadata/_custom_type_script = "uid://bs64v0udcw2ei"
