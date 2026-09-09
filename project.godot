@@ -46,13 +46,18 @@ folder_colors={
 "res://private/": "gray",
 "res://src/": "blue",
 "res://src/resources/": "orange",
-"res://src/scenes/": "green"
+"res://src/scenes/": "green",
+"res://src/scripts/autoloads/": "orange",
+"res://src/scripts/meta/": "red",
+"res://src/scripts/ui/": "green",
+"res://src/scripts/utils/": "gray",
+"res://src/shaders/": "red"
 }
 
 [global_group]
 
 world_entities=""
-encounter_zones=""
+player=""
 
 [input]
 
