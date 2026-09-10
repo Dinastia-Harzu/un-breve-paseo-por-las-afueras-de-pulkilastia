@@ -68,8 +68,6 @@ movement_component = NodePath("../../MovementComponent")
 navigation_agent = NodePath("../../NavigationAgent2D")
 metadata/_custom_type_script = "uid://gke4uagylag1"
 
-[node name="Timer" type="Timer" parent="FiniteStateMachine/Patrol" unique_id=396195364]
-
 [node name="Follow" type="Node" parent="FiniteStateMachine" unique_id=1048297427 node_paths=PackedStringArray("ai_component", "movement_component", "navigation_agent", "navigation_timer")]
 script = ExtResource("9_8wb47")
 speed = 50.0
