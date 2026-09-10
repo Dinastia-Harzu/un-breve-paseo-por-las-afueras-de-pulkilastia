@@ -34,4 +34,4 @@ func _acceleration_movement(direction: Vector2, max_speed: float, delta: float) 
 	)
 
 func _accelerationless_movement(direction: Vector2, speed: float, _delta: float) -> Vector2:
-	return direction * speed if direction else body.velocity.move_toward(Vector2.ZERO, speed)
+	return direction * speed if direction != Vector2.ZERO else body.velocity.move_toward(Vector2.ZERO, speed)

@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 
 func _start() -> void:
 	await owner.ready
-	state.enter("")
+	state.enter("", initial_data)
 
 
 func _transition_to_next_state(target_state_path: NodePath, data := {}) -> void:

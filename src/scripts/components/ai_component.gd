@@ -8,8 +8,8 @@ var player: Player = null
 
 
 func _ready() -> void:
-	for child: Sensor2D in find_children("*", "Sensor2D"):
-		sensors.append(child)
+	for sensor: Sensor2D in find_children("*", "Sensor2D"):
+		sensors.append(sensor)
 
 
 func _physics_process(delta: float) -> void:
