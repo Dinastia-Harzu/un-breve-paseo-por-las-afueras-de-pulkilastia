@@ -8,6 +8,7 @@ process_mode = 3
 script = ExtResource("1_kkvs4")
 
 [node name="Systems" type="Node" parent="." unique_id=918751139]
+process_mode = 1
 
 [node name="World" type="Node2D" parent="." unique_id=648427866]
 process_mode = 1
