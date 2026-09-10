@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://c3od7uuwv0ogr" path="res://src/resources/enemy_data/redeyed_skeleton.tres" id="2_qfiga"]
 [ext_resource type="Script" uid="uid://ep0hu6fhrxyr" path="res://src/scripts/components/encounter_triggerbox_component.gd" id="3_nmnxn"]
 [ext_resource type="Script" uid="uid://bfhmgwdbvh0qp" path="res://src/scripts/components/ai_component.gd" id="5_hp5ow"]
+[ext_resource type="Script" uid="uid://bkrbvwv5r1fll" path="res://src/scripts/enemies/states/idle.gd" id="6_8wb47"]
 [ext_resource type="Script" uid="uid://dw7a6tmh13yld" path="res://src/scripts/sensors/area_sensor2d.gd" id="6_600p7"]
 [ext_resource type="Script" uid="uid://cifvqcnvgt610" path="res://src/scripts/fsm/finite_state_machine.gd" id="7_556wh"]
 [ext_resource type="Script" uid="uid://c6rubt37hvtes" path="res://src/scripts/enemies/states/patrol.gd" id="8_haxr1"]
@@ -47,13 +48,28 @@ shape = SubResource("CircleShape2D_rwwbx")
 
 [node name="FiniteStateMachine" type="Node" parent="." unique_id=2033075372 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_556wh")
-initial_state = NodePath("Patrol")
+initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://cifvqcnvgt610"
 
-[node name="Patrol" type="Node" parent="FiniteStateMachine" unique_id=1874976654 node_paths=PackedStringArray("ai_component")]
-script = ExtResource("8_haxr1")
+[node name="Idle" type="Node" parent="FiniteStateMachine" unique_id=310560435 node_paths=PackedStringArray("ai_component", "idle_timer")]
+script = ExtResource("6_8wb47")
 ai_component = NodePath("../../AIComponent")
+idle_timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://gke4uagylag1"
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/Idle" unique_id=2015139353]
+
+[node name="Patrol" type="Node" parent="FiniteStateMachine" unique_id=1874976654 node_paths=PackedStringArray("ai_component", "movement_component", "navigation_agent", "patrol_timer")]
+script = ExtResource("8_haxr1")
+speed = 40.0
+max_patrol_time = 1.0
+ai_component = NodePath("../../AIComponent")
+movement_component = NodePath("../../MovementComponent")
+navigation_agent = NodePath("../../NavigationAgent2D")
+patrol_timer = NodePath("Timer")
+metadata/_custom_type_script = "uid://gke4uagylag1"
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/Patrol" unique_id=396195364]
 
 [node name="Follow" type="Node" parent="FiniteStateMachine" unique_id=1048297427 node_paths=PackedStringArray("ai_component", "movement_component", "navigation_agent", "navigation_timer")]
 script = ExtResource("9_8wb47")

@@ -20,7 +20,7 @@ func enter(previous_state_path: NodePath, data := {}) -> void:
 
 func physics_update(delta: float) -> void:
 	if not ai_component.player_detected():
-		finished.emit("Patrol")
+		finished.emit("Idle")
 		return
 
 	if not navigation_agent.is_navigation_finished():

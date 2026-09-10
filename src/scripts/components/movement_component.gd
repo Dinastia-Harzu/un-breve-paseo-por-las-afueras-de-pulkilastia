@@ -20,7 +20,7 @@ func move_towards(direction: Vector2, max_speed: float, delta: float) -> void:
 
 
 func move_towards_target(target: Node2D, max_speed: float, delta: float) -> void:
-	return move_towards(direction_to(target), max_speed, delta)
+	move_towards(direction_to(target), max_speed, delta)
 
 
 func direction_to(to: Node2D) -> Vector2:
