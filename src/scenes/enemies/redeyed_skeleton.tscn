@@ -59,14 +59,13 @@ metadata/_custom_type_script = "uid://gke4uagylag1"
 
 [node name="Timer" type="Timer" parent="FiniteStateMachine/Idle" unique_id=2015139353]
 
-[node name="Patrol" type="Node" parent="FiniteStateMachine" unique_id=1874976654 node_paths=PackedStringArray("ai_component", "movement_component", "navigation_agent", "patrol_timer")]
+[node name="Patrol" type="Node" parent="FiniteStateMachine" unique_id=1874976654 node_paths=PackedStringArray("ai_component", "movement_component", "navigation_agent")]
 script = ExtResource("8_haxr1")
 speed = 40.0
 max_patrol_time = 1.0
 ai_component = NodePath("../../AIComponent")
 movement_component = NodePath("../../MovementComponent")
 navigation_agent = NodePath("../../NavigationAgent2D")
-patrol_timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://gke4uagylag1"
 
 [node name="Timer" type="Timer" parent="FiniteStateMachine/Patrol" unique_id=396195364]
@@ -108,6 +107,5 @@ metadata/_custom_type_script = "uid://bs64v0udcw2ei"
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=595795787]
 path_desired_distance = 10.0
 target_desired_distance = 5.0
-debug_enabled = true
 
 [node name="NavigationTimer" type="Timer" parent="." unique_id=1440198205]

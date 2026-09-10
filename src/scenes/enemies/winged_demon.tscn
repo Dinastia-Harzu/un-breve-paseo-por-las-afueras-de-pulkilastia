@@ -56,17 +56,14 @@ metadata/_custom_type_script = "uid://gke4uagylag1"
 
 [node name="Timer" type="Timer" parent="FiniteStateMachine/Idle" unique_id=192034002]
 
-[node name="Patrol" type="Node" parent="FiniteStateMachine" unique_id=393493444 node_paths=PackedStringArray("ai_component", "movement_component", "navigation_agent", "patrol_timer")]
+[node name="Patrol" type="Node" parent="FiniteStateMachine" unique_id=393493444 node_paths=PackedStringArray("ai_component", "movement_component", "navigation_agent")]
 script = ExtResource("6_4moxn")
 speed = 20.0
 max_patrol_radius = 64.0
 ai_component = NodePath("../../AIComponent")
 movement_component = NodePath("../../MovementComponent")
 navigation_agent = NodePath("../../NavigationAgent2D")
-patrol_timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://gke4uagylag1"
-
-[node name="Timer" type="Timer" parent="FiniteStateMachine/Patrol" unique_id=248588872]
 
 [node name="Follow" type="Node" parent="FiniteStateMachine" unique_id=877313409 node_paths=PackedStringArray("ai_component", "movement_component", "navigation_agent", "navigation_timer")]
 script = ExtResource("7_vsspc")
