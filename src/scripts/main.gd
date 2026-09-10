@@ -3,7 +3,9 @@ extends Node
 
 
 const PLAYER_SCENE_UID := "uid://bbiwoqwac0ted"
-const TEST_LEVEL := "uid://ck5t7o3afxyuk"
+const TEST_LEVEL_UID := "uid://ck5t7o3afxyuk"
+
+const BATTLE_TRANSITION := preload("uid://ckhiayfi82ngg")
 
 @export var debug_mode := false:
 	set(value):
@@ -35,7 +37,7 @@ func _ready() -> void:
 	debug_root.visible = debug_mode
 
 	_init_player()
-	load_level(TEST_LEVEL)
+	load_level(TEST_LEVEL_UID)
 
 	_connect_signals()
 
@@ -49,8 +51,44 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		_paused = not _paused
 
 
+func halt_execution() -> void:
+	get_tree().paused = true
+
+
+func resume_execution() -> void:
+	get_tree().paused = false
+
+
 func load_level(level_scene_uid: String) -> void:
 	_deferred_load_level.call_deferred(level_scene_uid)
+
+
+func enter_battle(enemy_data: EnemyData) -> void:
+	halt_execution()
+
+	hud_root.hide()
+	
+	var transition := load_transition(BATTLE_TRANSITION)
+	play_transition(transition)
+	await transition.finished
+
+	resume_execution()
+
+
+func load_transition(transition_packed: PackedScene) -> Transition:
+	var transition_node := transition_packed.instantiate()
+	assert(transition_node != null, "No se ha podido instanciar la transición")
+
+	var transition := transition_node as Transition
+	assert(transition != null, "Esto no es una transición")
+
+	transition_root.add_child(transition)
+
+	return transition
+
+
+func play_transition(transition: Transition) -> void:
+	transition.transition_animator.play(AnimationNames.LibTransition.BATTLE_TRANSITION)
 
 
 func _init_player() -> void:
@@ -120,5 +158,4 @@ func _on_spawn_enemy(enemy: MapEnemy) -> void:
 
 
 func _on_trigger_encounter(enemy: MapEnemy) -> void:
-	Log.debug("Batalla: %s vs. %s" % [player, enemy])
-	enemy.queue_free()
+	enter_battle(enemy.enemy_data)

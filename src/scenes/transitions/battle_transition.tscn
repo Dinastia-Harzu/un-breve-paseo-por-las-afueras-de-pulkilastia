@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://ckhiayfi82ngg"]
+
+[ext_resource type="Shader" uid="uid://bee8e2autfpa8" path="res://src/shaders/waterdrop_wave.gdshader" id="1_881l1"]
+[ext_resource type="Script" uid="uid://b7wmqxq3ckneq" path="res://src/scripts/ui/transitions/transition.gd" id="1_nk26a"]
+[ext_resource type="AnimationLibrary" uid="uid://b13u1f8rh4i7l" path="res://src/resources/animations/transition.res" id="2_yglpv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwwbx"]
+shader = ExtResource("1_881l1")
+shader_parameter/force = 0.0
+shader_parameter/radius = 0.800000038
+
+[sub_resource type="Animation" id="Animation_yglpv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShaderScreen:material:shader_parameter/force")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShaderScreen:material:shader_parameter/radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.800000038]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Backdrop:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nk26a"]
+_data = {
+&"RESET": SubResource("Animation_yglpv")
+}
+
+[node name="BattleTransition" type="Control" unique_id=1886187293 node_paths=PackedStringArray("transition_animator")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nk26a")
+transition_animator = NodePath("TransitionAnimator")
+metadata/_custom_type_script = "uid://b7wmqxq3ckneq"
+
+[node name="ShaderScreen" type="ColorRect" parent="." unique_id=1537580761]
+material = SubResource("ShaderMaterial_rwwbx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="." unique_id=1526509278]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TransitionAnimator" type="AnimationPlayer" parent="." unique_id=57062198]
+libraries/ = SubResource("AnimationLibrary_nk26a")
+libraries/transition = ExtResource("2_yglpv")
