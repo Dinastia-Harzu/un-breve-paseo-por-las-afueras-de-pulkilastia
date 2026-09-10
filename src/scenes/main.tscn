@@ -57,6 +57,7 @@ layer = 20
 
 [node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=436953972]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,6 +65,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseLayer/PauseRoot" unique_id=911734360]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1716771813]
 process_mode = 3

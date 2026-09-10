@@ -15,6 +15,11 @@ const TEST_LEVEL := "uid://ck5t7o3afxyuk"
 var player: Player = null
 
 var _current_level: Level2D = null
+var _paused := false:
+	set(value):
+		_paused = value
+		get_tree().paused = value
+		pause_root.visible = _paused
 
 @onready var level_root: Node2D = %LevelRoot
 @onready var entity_root: Node2D = %EntityRoot
@@ -40,6 +45,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		Globals.quit_game()
 	elif event.is_action_pressed(InputActions.DEBUG_TOGGLE):
 		debug_mode = not debug_mode
+	elif event.is_action_pressed(InputActions.PAUSE):
+		_paused = not _paused
 
 
 func load_level(level_scene_uid: String) -> void:
