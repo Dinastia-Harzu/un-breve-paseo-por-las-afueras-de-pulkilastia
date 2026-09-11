@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://bee8e2autfpa8" path="res://src/shaders/waterdrop_wave.gdshader" id="1_881l1"]
 [ext_resource type="Script" uid="uid://b7wmqxq3ckneq" path="res://src/scripts/ui/transitions/transition.gd" id="1_nk26a"]
-[ext_resource type="AnimationLibrary" uid="uid://b13u1f8rh4i7l" path="res://src/resources/animations/transition.res" id="2_yglpv"]
+[ext_resource type="Animation" uid="uid://bup373qb0hwk2" path="res://src/resources/animations/transition/battle_transition.res" id="3_nk26a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rwwbx"]
 shader = ExtResource("1_881l1")
@@ -50,7 +50,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nk26a"]
 _data = {
-&"RESET": SubResource("Animation_yglpv")
+&"RESET": SubResource("Animation_yglpv"),
+&"battle_transition": ExtResource("3_nk26a")
 }
 
 [node name="BattleTransition" type="Control" unique_id=1886187293 node_paths=PackedStringArray("transition_animator")]
@@ -61,6 +62,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nk26a")
+animation = "battle_transition"
 transition_animator = NodePath("TransitionAnimator")
 metadata/_custom_type_script = "uid://b7wmqxq3ckneq"
 
@@ -84,4 +86,3 @@ grow_vertical = 2
 
 [node name="TransitionAnimator" type="AnimationPlayer" parent="." unique_id=57062198]
 libraries/ = SubResource("AnimationLibrary_nk26a")
-libraries/transition = ExtResource("2_yglpv")

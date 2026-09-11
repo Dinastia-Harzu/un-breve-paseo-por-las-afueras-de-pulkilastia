@@ -4,8 +4,11 @@ extends Node
 
 const PLAYER_SCENE_UID := "uid://bbiwoqwac0ted"
 const TEST_LEVEL_UID := "uid://ck5t7o3afxyuk"
+const BATTLE_SCENE_UID := "uid://dc7eiankurnrj"
 
 const BATTLE_TRANSITION := preload("uid://ckhiayfi82ngg")
+const BATTLE_ENDED_TRANSITION := preload("uid://dsdkwvfvtp5am")
+const BACK_TO_LEVEL_TRANSITION := preload("uid://ck5bctjfx6mma")
 
 @export var debug_mode := false:
 	set(value):
@@ -17,11 +20,16 @@ const BATTLE_TRANSITION := preload("uid://ckhiayfi82ngg")
 var player: Player = null
 
 var _current_level: Level2D = null
+var _current_battle_scene: BattleScene
+
 var _paused := false:
 	set(value):
 		_paused = value
 		get_tree().paused = value
 		pause_root.visible = _paused
+
+@onready var world: Node2D = %World
+@onready var battle: Node2D = %Battle
 
 @onready var level_root: Node2D = %LevelRoot
 @onready var entity_root: Node2D = %EntityRoot
@@ -49,6 +57,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		debug_mode = not debug_mode
 	elif event.is_action_pressed(InputActions.PAUSE):
 		_paused = not _paused
+	elif event.is_action_pressed(InputActions.DEBUG_EXIT_BATTLE):
+		exit_battle()
 
 
 func halt_execution() -> void:
@@ -63,16 +73,61 @@ func load_level(level_scene_uid: String) -> void:
 	_deferred_load_level.call_deferred(level_scene_uid)
 
 
+func load_battle_scene(battle_scene_uid: String) -> void:
+	var new_battle_scene_packed: PackedScene = ResourceLoader.load(battle_scene_uid, "PackedScene")
+	if not Globals.check(new_battle_scene_packed, "No se ha podido cargar lo que sea esto: %s" % battle_scene_uid):
+		return
+
+	var new_battle_scene := new_battle_scene_packed.instantiate()
+
+	if not Globals.check(new_battle_scene, "No se ha podido instanciar la escena de batalla con UID %s" % battle_scene_uid):
+		return
+
+	if not new_battle_scene is BattleScene:
+		new_battle_scene.free()
+		push_error("Lo que sea que hayas pasado no hereda de `BattleScene`")
+		return
+
+	_current_battle_scene = new_battle_scene as BattleScene
+
+	battle.add_child(_current_battle_scene)
+
+
 func enter_battle(enemy_data: EnemyData) -> void:
 	halt_execution()
 
 	hud_root.hide()
 	
-	var transition := load_transition(BATTLE_TRANSITION)
-	play_transition(transition)
-	await transition.finished
+	await play_transition(BATTLE_TRANSITION)
+
+	load_battle_scene(BATTLE_SCENE_UID)
+	_current_battle_scene.load_enemy(enemy_data)
 
 	resume_execution()
+
+	world.process_mode = Node.PROCESS_MODE_DISABLED
+	world.hide()
+	battle.process_mode = Node.PROCESS_MODE_PAUSABLE
+	battle.show()
+
+
+func exit_battle() -> void:
+	halt_execution()
+
+	await play_transition(BATTLE_ENDED_TRANSITION, false)
+
+	_current_battle_scene.queue_free()
+	_current_battle_scene = null
+
+	battle.process_mode = Node.PROCESS_MODE_DISABLED
+	battle.hide()
+	world.show()
+
+	await play_transition(BACK_TO_LEVEL_TRANSITION)
+
+	resume_execution()
+
+	world.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 
 func load_transition(transition_packed: PackedScene) -> Transition:
@@ -87,8 +142,15 @@ func load_transition(transition_packed: PackedScene) -> Transition:
 	return transition
 
 
-func play_transition(transition: Transition) -> void:
-	transition.transition_animator.play(AnimationNames.LibTransition.BATTLE_TRANSITION)
+func play_transition(transition_packed: PackedScene, reset: bool = true):
+	var transition := load_transition(transition_packed)
+
+	transition.play()
+	await transition.finished
+	if reset:
+		transition.reset()
+
+	transition.queue_free()
 
 
 func _init_player() -> void:

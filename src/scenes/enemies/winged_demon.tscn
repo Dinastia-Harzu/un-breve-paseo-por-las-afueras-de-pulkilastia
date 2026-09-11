@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://66brd6fu0vts"]
 
 [ext_resource type="Script" uid="uid://c1swae47sxi4f" path="res://src/scripts/enemies/base/map_enemy.gd" id="1_mo1lu"]
+[ext_resource type="Resource" uid="uid://hu5xy5qeb076" path="res://src/resources/enemy_data/winged_demon.tres" id="2_o700k"]
 [ext_resource type="Texture2D" uid="uid://d0ao0317mu42o" path="res://assets/art/2d/spritesheets/walk - vanilla.png" id="2_tqg6b"]
 [ext_resource type="Script" uid="uid://ep0hu6fhrxyr" path="res://src/scripts/components/encounter_triggerbox_component.gd" id="3_tqg6b"]
 [ext_resource type="Script" uid="uid://bfhmgwdbvh0qp" path="res://src/scripts/components/ai_component.gd" id="4_u6d0w"]
@@ -21,6 +22,7 @@ radius = 150.0
 collision_layer = 4
 collision_mask = 257
 script = ExtResource("1_mo1lu")
+enemy_data = ExtResource("2_o700k")
 metadata/_custom_type_script = "uid://c1swae47sxi4f"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=904820394]

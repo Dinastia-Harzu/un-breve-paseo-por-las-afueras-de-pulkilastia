@@ -36,11 +36,9 @@ func _run() -> void:
 		if not is_free:
 			content += "class Lib%s:\n" % library.to_pascal_case()
 		for animation: String in animations[library]:
-			if is_free:
-				content += "const %s = \"%s\"" % [animation.to_upper(), animation]
-			else:
-				var animation_fullpath := "%s/%s" % [library, animation]
-				content += "\tconst %s = \"%s\"" % [animation.to_upper(), animation_fullpath]
+			if not is_free:
+				content += "\t"
+			content += "const %s = \"%s\"\n" % [animation.to_upper(), animation]
 		content += "\n"
 	script.store_string(content)
 

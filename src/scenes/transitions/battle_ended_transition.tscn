@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dsdkwvfvtp5am"]
+
+[ext_resource type="Script" uid="uid://b7wmqxq3ckneq" path="res://src/scripts/ui/transitions/transition.gd" id="1_6wi30"]
+[ext_resource type="Animation" uid="uid://b5wlmee576ht3" path="res://src/resources/animations/transition/battle_ended_transition.res" id="2_8j621"]
+
+[sub_resource type="Animation" id="Animation_6wi30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Backdrop:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o17mi"]
+_data = {
+&"RESET": SubResource("Animation_6wi30"),
+&"battle_ended_transition": ExtResource("2_8j621")
+}
+
+[node name="BattleEndedTransition" type="Control" unique_id=1284693312 node_paths=PackedStringArray("transition_animator")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6wi30")
+animation = "battle_ended_transition"
+transition_animator = NodePath("TransitionAnimator")
+metadata/_custom_type_script = "uid://b7wmqxq3ckneq"
+
+[node name="Backdrop" type="ColorRect" parent="." unique_id=838671316]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TransitionAnimator" type="AnimationPlayer" parent="." unique_id=1981279444]
+libraries/ = SubResource("AnimationLibrary_o17mi")

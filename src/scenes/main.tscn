@@ -11,6 +11,7 @@ script = ExtResource("1_kkvs4")
 process_mode = 1
 
 [node name="World" type="Node2D" parent="." unique_id=648427866]
+unique_name_in_owner = true
 process_mode = 1
 
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=760215065]
@@ -24,6 +25,13 @@ y_sort_enabled = true
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=1625041676]
 unique_name_in_owner = true
 y_sort_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1715131320]
+
+[node name="Battle" type="Node2D" parent="CanvasLayer" unique_id=1092849664]
+unique_name_in_owner = true
+process_mode = 4
+visible = false
 
 [node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1756992226]
 process_mode = 1
