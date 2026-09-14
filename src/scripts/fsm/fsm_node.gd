@@ -5,6 +5,9 @@ extends Node
 signal finished(next_state_path: NodePath, data: Dictionary)
 
 
+@export var state_name: String
+
+
 func handle_input(_event: InputEvent) -> void:
 	pass
 

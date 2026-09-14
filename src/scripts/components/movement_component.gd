@@ -27,6 +27,14 @@ func direction_to(to: Node2D) -> Vector2:
 	return body.global_position.direction_to(to.global_position)
 
 
+func is_moving() -> bool:
+	return body.velocity != Vector2.ZERO
+
+
+func stop_moving() -> void:
+	body.velocity = Vector2.ZERO
+
+
 func _acceleration_movement(direction: Vector2, max_speed: float, delta: float) -> Vector2:
 	return body.velocity.lerp(
 		direction.normalized() * max_speed,

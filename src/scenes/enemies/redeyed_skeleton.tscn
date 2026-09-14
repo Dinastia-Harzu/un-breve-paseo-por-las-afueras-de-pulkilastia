@@ -55,6 +55,7 @@ metadata/_custom_type_script = "uid://cifvqcnvgt610"
 script = ExtResource("6_8wb47")
 ai_component = NodePath("../../AIComponent")
 idle_timer = NodePath("Timer")
+state_name = "Idle"
 metadata/_custom_type_script = "uid://gke4uagylag1"
 
 [node name="Timer" type="Timer" parent="FiniteStateMachine/Idle" unique_id=2015139353]
@@ -66,6 +67,7 @@ max_patrol_time = 1.0
 ai_component = NodePath("../../AIComponent")
 movement_component = NodePath("../../MovementComponent")
 navigation_agent = NodePath("../../NavigationAgent2D")
+state_name = "Patrol"
 metadata/_custom_type_script = "uid://gke4uagylag1"
 
 [node name="Follow" type="Node" parent="FiniteStateMachine" unique_id=1048297427 node_paths=PackedStringArray("ai_component", "movement_component", "navigation_agent", "navigation_timer")]
@@ -75,6 +77,7 @@ ai_component = NodePath("../../AIComponent")
 movement_component = NodePath("../../MovementComponent")
 navigation_agent = NodePath("../../NavigationAgent2D")
 navigation_timer = NodePath("../../NavigationTimer")
+state_name = "Follow"
 metadata/_custom_type_script = "uid://gke4uagylag1"
 
 [node name="AIComponent" type="Node2D" parent="." unique_id=1236782122]
