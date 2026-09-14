@@ -20,7 +20,8 @@ const BACK_TO_LEVEL_TRANSITION := preload("uid://ck5bctjfx6mma")
 var player: Player = null
 
 var _current_level: Level2D = null
-var _current_battle_scene: BattleScene
+var _current_battle_scene: BattleScene = null
+var _transition_stack: Array[Transition] = []
 
 var _paused := false:
 	set(value):
@@ -93,7 +94,7 @@ func load_battle_scene(battle_scene_uid: String) -> void:
 	battle.add_child(_current_battle_scene)
 
 
-func enter_battle(enemy_data: EnemyData) -> void:
+func enter_battle(enemy: MapEnemy) -> void:
 	halt_execution()
 
 	hud_root.hide()
@@ -101,7 +102,7 @@ func enter_battle(enemy_data: EnemyData) -> void:
 	await play_transition(BATTLE_TRANSITION)
 
 	load_battle_scene(BATTLE_SCENE_UID)
-	_current_battle_scene.load_enemy(enemy_data)
+	_current_battle_scene.load_enemy(enemy)
 
 	resume_execution()
 
@@ -114,7 +115,7 @@ func enter_battle(enemy_data: EnemyData) -> void:
 func exit_battle() -> void:
 	halt_execution()
 
-	await play_transition(BATTLE_ENDED_TRANSITION, false)
+	await play_transition(BATTLE_ENDED_TRANSITION, true)
 
 	_current_battle_scene.queue_free()
 	_current_battle_scene = null
@@ -122,6 +123,8 @@ func exit_battle() -> void:
 	battle.process_mode = Node.PROCESS_MODE_DISABLED
 	battle.hide()
 	world.show()
+
+	await get_tree().process_frame
 
 	await play_transition(BACK_TO_LEVEL_TRANSITION)
 
@@ -142,15 +145,23 @@ func load_transition(transition_packed: PackedScene) -> Transition:
 	return transition
 
 
-func play_transition(transition_packed: PackedScene, reset: bool = true):
+func play_transition(transition_packed: PackedScene, hold: bool = false):
 	var transition := load_transition(transition_packed)
+	_empty_transition_stack()
 
 	transition.play()
 	await transition.finished
-	if reset:
-		transition.reset()
+	transition.reset()
 
-	transition.queue_free()
+	if hold:
+		_transition_stack.push_back(transition)
+	else:
+		transition.queue_free()
+
+
+func _empty_transition_stack() -> void:
+	while not _transition_stack.is_empty():
+		_transition_stack.pop_back().queue_free()
 
 
 func _init_player() -> void:
@@ -194,6 +205,7 @@ func _deferred_load_level(level_scene_uid: String) -> void:
 func _connect_signals() -> void:
 	EventBus.spawn_enemy.connect(_on_spawn_enemy)
 	EventBus.trigger_encounter.connect(_on_trigger_encounter)
+	EventBus.exit_battle.connect(_on_exit_battle)
 
 
 func _place_player_at_level_spawn() -> void:
@@ -220,4 +232,10 @@ func _on_spawn_enemy(enemy: MapEnemy) -> void:
 
 
 func _on_trigger_encounter(enemy: MapEnemy) -> void:
-	enter_battle(enemy.enemy_data)
+	enter_battle(enemy)
+
+
+func _on_exit_battle(enemy: MapEnemy = null) -> void:
+	exit_battle()
+	if enemy != null:
+		enemy.queue_free()

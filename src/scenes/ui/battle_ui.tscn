@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://bokaifs0dasdb"]
+
+[ext_resource type="Texture2D" uid="uid://b0wd6yj2r0tl4" path="res://assets/art/ui/button-ninepatch.png" id="1_hbxsh"]
+[ext_resource type="Script" uid="uid://t621h2u4u4j8" path="res://src/scripts/ui/battle_ui.gd" id="1_ocup7"]
+[ext_resource type="PackedScene" uid="uid://cnel0ki4g2880" path="res://src/scenes/ui/player_stats_box.tscn" id="2_hbxsh"]
+[ext_resource type="Texture2D" uid="uid://cuv46skn1sf1f" path="res://assets/art/ui/textbox.png" id="4_syo8h"]
+
+[node name="BattleUI" type="Control" unique_id=566179238 node_paths=PackedStringArray("_buttons_container", "_flee_button", "_attack_button", "_player_stats_box", "_attack_ui")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ocup7")
+_buttons_container = NodePath("ButtonsContainer")
+_flee_button = NodePath("ButtonsContainer/Flee/Button")
+_attack_button = NodePath("ButtonsContainer/Attack/Button")
+_player_stats_box = NodePath("PlayerStatsBox")
+_attack_ui = NodePath("AttackUI")
+
+[node name="ButtonsContainer" type="Control" parent="." unique_id=782624976]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Flee" type="NinePatchRect" parent="ButtonsContainer" unique_id=1536042817]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.25
+anchor_right = 0.35
+anchor_bottom = 0.75
+grow_vertical = 2
+texture = ExtResource("1_hbxsh")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Button" type="Button" parent="ButtonsContainer/Flee" unique_id=94750870]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Label" type="Label" parent="ButtonsContainer/Flee" unique_id=266356363]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Flee"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack" type="NinePatchRect" parent="ButtonsContainer" unique_id=2122897469]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.75
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_hbxsh")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Button" type="Button" parent="ButtonsContainer/Attack" unique_id=1990378914]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Label" type="Label" parent="ButtonsContainer/Attack" unique_id=1477336972]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerStatsBox" parent="." unique_id=445622142 instance=ExtResource("2_hbxsh")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.425
+anchor_top = 0.7
+anchor_right = 0.575
+grow_vertical = 1
+
+[node name="AttackUI" type="Control" parent="." unique_id=951042597]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Textbox" type="NinePatchRect" parent="AttackUI" unique_id=496416235]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.3
+grow_horizontal = 2
+texture = ExtResource("4_syo8h")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Label" type="Label" parent="AttackUI/Textbox" unique_id=1069664289]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "¡ATTACK!"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -2,11 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://bnr4c8i46s2r8" path="res://assets/art/2d/sprites/winged-demon-singlesprite.png" id="1_30cft"]
 [ext_resource type="Script" uid="uid://bi300aqndq2c0" path="res://src/scripts/resources/enemy_data.gd" id="1_nbbww"]
-[ext_resource type="Texture2D" uid="uid://d0ao0317mu42o" path="res://assets/art/2d/spritesheets/walk - vanilla.png" id="2_hpx06"]
 
 [resource]
 script = ExtResource("1_nbbww")
 name = "Winged Demon"
-map_sprite = ExtResource("2_hpx06")
 battle_sprite = ExtResource("1_30cft")
+max_hp = 20
+offense = 10
+defense = 8
+intelligence = 12
+constitution = 6
+speed = 13
+xp = 50
+money = 25
 metadata/_custom_type_script = "uid://bi300aqndq2c0"

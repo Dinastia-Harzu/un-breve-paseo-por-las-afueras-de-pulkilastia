@@ -34,3 +34,28 @@ func check(obj: Object, expected: String = "") -> bool:
 			push_error(expected)
 		return false
 	return true
+
+
+func remove_all_children(node: Node) -> void:
+	for child in node.get_children():
+		node.remove_child(child)
+
+
+func strongest_axis(v: Vector2) -> Vector2:
+	var sv := v.sign()
+	return Vector2(sv.x, 0.) if v.abs().aspect() >= 1. else Vector2(0., sv.y)
+
+
+func vmax(v: Vector2) -> float:
+	return maxf(v.x, v.y)
+
+
+func vmin(v: Vector2) -> float:
+	return minf(v.x, v.y)
+
+
+func iota(size: int) -> Array[int]:
+	var ι: Array[int] = []
+	for i in size:
+		ι.append(i)
+	return ι

@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://c6p6sacqh556e" path="res://src/scripts/battle/scenes/battle_scene.gd" id="1_mfdpp"]
 [ext_resource type="Texture2D" uid="uid://cm35lw3xymjn4" path="res://assets/art/2d/sprites/skeleton-red_eyes-singleframe.png" id="2_xjren"]
+[ext_resource type="PackedScene" uid="uid://bokaifs0dasdb" path="res://src/scenes/ui/battle_ui.tscn" id="3_kymnm"]
+[ext_resource type="PackedScene" uid="uid://1makqrw0xxd6" path="res://src/scenes/gestures/qdollar.tscn" id="3_xdrup"]
 
-[node name="BattleScene" type="Node2D" unique_id=1754211570 node_paths=PackedStringArray("enemy_sprite")]
+[node name="BattleScene" type="Node2D" unique_id=1754211570 node_paths=PackedStringArray("enemy_sprite", "battle_ui", "attack_timer", "qdollar")]
 script = ExtResource("1_mfdpp")
 enemy_sprite = NodePath("EnemySprite")
+battle_ui = NodePath("CanvasLayer/Control/BattleUI")
+attack_timer = NodePath("AttackTimer")
+qdollar = NodePath("QDollar")
 metadata/_custom_type_script = "uid://c6p6sacqh556e"
 
 [node name="EnemySprite" type="Sprite2D" parent="." unique_id=1278677730]
@@ -23,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=1317272695]
 layout_mode = 1
@@ -31,4 +37,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="BattleUI" parent="CanvasLayer/Control" unique_id=566179238 instance=ExtResource("3_kymnm")]
+layout_mode = 1
+
+[node name="QDollar" parent="." unique_id=815431831 instance=ExtResource("3_xdrup")]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=870523683]
+wait_time = 3.0
+one_shot = true

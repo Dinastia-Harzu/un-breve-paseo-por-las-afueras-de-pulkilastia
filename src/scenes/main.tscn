@@ -26,9 +26,10 @@ y_sort_enabled = true
 unique_name_in_owner = true
 y_sort_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1715131320]
+[node name="BattleLayer" type="CanvasLayer" parent="." unique_id=1715131320]
+layer = 5
 
-[node name="Battle" type="Node2D" parent="CanvasLayer" unique_id=1092849664]
+[node name="Battle" type="Node2D" parent="BattleLayer" unique_id=1092849664]
 unique_name_in_owner = true
 process_mode = 4
 visible = false

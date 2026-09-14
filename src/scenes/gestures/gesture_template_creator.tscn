@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba5chcyr3luxo"]
+
+[ext_resource type="Script" uid="uid://k6nhjeunebrl" path="res://src/scripts/gestures/gesture_recorder.gd" id="1_4j1rp"]
+[ext_resource type="Resource" uid="uid://cte2m8kfu0chm" path="res://src/resources/gestures/empty.tres" id="2_7oxqi"]
+
+[node name="GestureTemplateCreator" type="Node2D"]
+script = ExtResource("1_4j1rp")
+template_name = &"empty"
+a_template = ExtResource("2_7oxqi")

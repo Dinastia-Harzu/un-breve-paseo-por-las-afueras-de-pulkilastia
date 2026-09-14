@@ -1,0 +1,12 @@
+[gd_scene load_steps=7 format=3 uid="uid://1makqrw0xxd6"]
+
+[ext_resource type="Script" uid="uid://bjgd4pggk35tu" path="res://src/scripts/gestures/qdollar.gd" id="1_ikjlp"]
+[ext_resource type="Script" uid="uid://bgieua62my75t" path="res://src/scripts/resources/gesture_template.gd" id="2_b2usu"]
+[ext_resource type="Resource" uid="uid://q8s72353i1xq" path="res://src/resources/gestures/star.tres" id="2_dbyfb"]
+[ext_resource type="Resource" uid="uid://ptbe5jcjnonf" path="res://src/resources/gestures/curar.tres" id="4_uhy2t"]
+[ext_resource type="Resource" uid="uid://b856qfsv53cyv" path="res://src/resources/gestures/kaminari.tres" id="5_vjun8"]
+[ext_resource type="Resource" uid="uid://cte2m8kfu0chm" path="res://src/resources/gestures/empty.tres" id="6_vjun8"]
+
+[node name="QDollar" type="Node2D"]
+script = ExtResource("1_ikjlp")
+gesture_templates = Array[ExtResource("2_b2usu")]([ExtResource("4_uhy2t"), ExtResource("5_vjun8"), ExtResource("2_dbyfb"), ExtResource("6_vjun8")])

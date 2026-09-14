@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://cj55hpankxe5w"]
+
+[ext_resource type="Script" uid="uid://bcu3nbimq00ha" path="res://src/scripts/resources/player_data.gd" id="1_0fc0l"]
+
+[resource]
+script = ExtResource("1_0fc0l")
+max_hp = 15
+current_hp = 15
+offense = 5
+defense = 7
+intelligence = 12
+constitution = 16
+speed = 6
