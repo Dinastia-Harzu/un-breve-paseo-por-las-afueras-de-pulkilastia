@@ -50,6 +50,7 @@ folder_colors={
 "res://src/scenes/": "green",
 "res://src/scripts/autoloads/": "orange",
 "res://src/scripts/meta/": "red",
+"res://src/scripts/resources/": "teal",
 "res://src/scripts/ui/": "green",
 "res://src/scripts/utils/": "gray",
 "res://src/shaders/": "red"

@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var remote_transform: RemoteTransform2D
 @export var movement_component: MovementComponent
 
+@export var player_data: PlayerData
+
 
 func _ready() -> void:
 	add_to_group(NodeGroups.PLAYER)

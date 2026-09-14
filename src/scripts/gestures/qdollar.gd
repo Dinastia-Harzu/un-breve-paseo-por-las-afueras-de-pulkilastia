@@ -2,19 +2,9 @@ class_name QDollar
 extends Node2D
 
 
-@export var gesture_templates: Array[GestureTemplate]
-
-var templates: Array[PointCloud] = []
-
 var is_drawing := false
 var finished_drawing := false
 var current_line: Line2D = null
-
-
-func _ready() -> void:
-	for gt in gesture_templates:
-		gt.deserialize()
-		templates.append(gt.point_cloud)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -29,16 +19,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			current_line.add_point(event.position)
 		else:
 			is_drawing = false
-			current_line = null # Probablemente innecesario
 	elif event is InputEventScreenDrag and is_drawing:
 		current_line.add_point(event.position)
 
 
-func analyse() -> void:
+func analyse() -> QDollarUtils.Result:
 	var points: Array[QPoint] = []
 	var strokes := get_children()
 	if strokes.is_empty():
-		return
+		return null
 	for i in strokes.size():
 		var stroke := strokes[i] as Line2D
 		for p in stroke.points:
@@ -46,9 +35,10 @@ func analyse() -> void:
 	var result := q_recogniser(points)
 	print(result)
 	finished_drawing = true
+	return result
 
 
-func remove_lines() -> void:
+func clear() -> void:
 	Globals.remove_all_children(self)
 
 
@@ -57,6 +47,7 @@ func q_recogniser(points: Array[QPoint]) -> QDollarUtils.Result:
 	var index := -1
 	var score := INF
 	var candidate := PointCloud.new(points)
+	var templates := QDollarUtils.templates
 	for i in templates.size():
 		var d := cloud_match(candidate, templates[i], score)
 		if d < score:

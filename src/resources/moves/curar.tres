@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://by0mp7i81yq6v"]
+
+[ext_resource type="Script" uid="uid://dooud8nr4vkd6" path="res://src/scripts/resources/moves/curar.gd" id="1_x1675"]
+
+[resource]
+script = ExtResource("1_x1675")
+type = 2
+metadata/_custom_type_script = "uid://wu1j5qaudm2a"

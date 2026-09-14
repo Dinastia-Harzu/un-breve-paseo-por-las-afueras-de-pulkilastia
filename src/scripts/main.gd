@@ -103,6 +103,7 @@ func enter_battle(enemy: MapEnemy) -> void:
 
 	load_battle_scene(BATTLE_SCENE_UID)
 	_current_battle_scene.load_enemy(enemy)
+	_current_battle_scene.assign_player_data(player.player_data)
 
 	resume_execution()
 

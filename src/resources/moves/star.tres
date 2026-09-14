@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://c1ndengp37fbl"]
+
+[ext_resource type="Script" uid="uid://ct8ecn5k1xs8n" path="res://src/scripts/resources/moves/star.gd" id="1_n7ik0"]
+
+[resource]
+script = ExtResource("1_n7ik0")
+base_damage = 50
+metadata/_custom_type_script = "uid://wu1j5qaudm2a"

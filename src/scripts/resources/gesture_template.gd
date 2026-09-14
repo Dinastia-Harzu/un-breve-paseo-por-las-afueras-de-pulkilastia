@@ -2,10 +2,12 @@ class_name GestureTemplate
 extends Resource
 
 
-@export var template_name: StringName
+@export var template_name: String
 @export var positions: PackedVector2Array
 @export var stroke_ids: PackedInt32Array
 @export var lut: PackedInt32Array
+
+@export var associated_move: MoveData
 
 var point_cloud: PointCloud
 
@@ -15,7 +17,7 @@ func _to_string() -> String:
 
 
 static func from_point_cloud(pc: PointCloud) -> GestureTemplate:
-	var gt: GestureTemplate = GestureTemplate.new()
+	var gt := GestureTemplate.new()
 	gt.point_cloud = pc
 	gt.serialize()
 	return gt

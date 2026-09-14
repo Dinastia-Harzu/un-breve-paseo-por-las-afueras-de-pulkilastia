@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://div6xpdwwnwtq"]
+
+[ext_resource type="Script" uid="uid://cnxtt6klr57pv" path="res://src/scripts/resources/moves/kaminari.gd" id="1_8b3od"]
+
+[resource]
+script = ExtResource("1_8b3od")
+base_damage = 20
+type = 1
+metadata/_custom_type_script = "uid://wu1j5qaudm2a"

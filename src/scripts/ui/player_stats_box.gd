@@ -7,8 +7,8 @@ extends Control
 
 var hp: int:
 	set(value):
-		hp_label.text = "%d/%d" % [value, player_data.max_hp]
+		hp_label.text = "%d/%d" % [value, player_data.stats.max_hp]
 
 
 func _ready() -> void:
-	hp_label.text = "%d/%d" % [player_data.current_hp, player_data.max_hp]
+	hp_label.text = "%d/%d" % [player_data.stats.current_hp, player_data.stats.max_hp]

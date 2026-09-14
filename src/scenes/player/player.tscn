@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bbiwoqwac0ted"]
 
 [ext_resource type="Script" uid="uid://cw0vx0i4mta5m" path="res://src/scripts/player/player.gd" id="1_swhsd"]
+[ext_resource type="Resource" uid="uid://cj55hpankxe5w" path="res://src/resources/player_data.tres" id="2_cx3ie"]
 [ext_resource type="Texture2D" uid="uid://bg537wnpa6c3n" path="res://assets/art/2d/spritesheets/character.png" id="2_qopur"]
 [ext_resource type="Script" uid="uid://bs64v0udcw2ei" path="res://src/scripts/components/movement_component.gd" id="3_n52bt"]
 
@@ -16,6 +17,7 @@ speed = 120.0
 sprite = NodePath("Sprite")
 remote_transform = NodePath("RemoteTransform2D")
 movement_component = NodePath("MovementComponent")
+player_data = ExtResource("2_cx3ie")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1436506240]
 position = Vector2(0, -8)

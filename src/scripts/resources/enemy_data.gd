@@ -7,12 +7,7 @@ extends Resource
 @export var battle_sprite: Texture2D
 
 @export_group("Base Stats")
-@export var max_hp: int
-@export var offense: int
-@export var defense: int
-@export var intelligence: int
-@export var constitution: int
-@export var speed: int
+@export var stats: Stats
 
 @export_group("Rewards")
 @export var xp: int
