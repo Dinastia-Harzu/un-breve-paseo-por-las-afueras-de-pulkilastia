@@ -7,8 +7,11 @@ extends CharacterBody2D
 @export var sprite: Sprite2D
 @export var remote_transform: RemoteTransform2D
 @export var movement_component: MovementComponent
+@export var animation_tree: AnimationTree
 
 @export var player_data: PlayerData
+
+var direction := Vector2.DOWN
 
 
 func _ready() -> void:
@@ -17,13 +20,19 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var direction := Input.get_vector(
+	var input_direction := Input.get_vector(
 		InputActions.MOVE_LEFT,
 		InputActions.MOVE_RIGHT,
 		InputActions.MOVE_UP,
 		InputActions.MOVE_DOWN
 	)
-	movement_component.move_towards(direction, speed, delta)
+	movement_component.move_towards(input_direction, speed, delta)
+
+	if movement_component.is_moving():
+		direction = velocity.normalized()
+
+	animation_tree.set("parameters/StateMachine/idle/blend_position", direction)
+	animation_tree.set("parameters/StateMachine/walk/blend_position", direction)
 
 
 func assign_camera(camera: Camera2D) -> void:
