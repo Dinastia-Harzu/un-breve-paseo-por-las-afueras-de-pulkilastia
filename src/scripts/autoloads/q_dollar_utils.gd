@@ -20,10 +20,7 @@ func _ready() -> void:
 		"kaminari",
 		"star",
 	]:
-		var gesture_template: GestureTemplate = ResourceLoader.load(
-			PATH + gesture_template_file + EXTENSION,
-			"GestureTemplate"
-		)
+		var gesture_template := ResourceLoader.load(PATH + gesture_template_file + EXTENSION) as GestureTemplate
 		assert(gesture_template != null)
 		add_template(gesture_template)
 

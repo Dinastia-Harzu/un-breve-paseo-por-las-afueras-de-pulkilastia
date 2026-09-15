@@ -75,7 +75,7 @@ func load_level(level_scene_uid: String) -> void:
 
 
 func load_battle_scene(battle_scene_uid: String) -> void:
-	var new_battle_scene_packed: PackedScene = ResourceLoader.load(battle_scene_uid, "PackedScene")
+	var new_battle_scene_packed := ResourceLoader.load(battle_scene_uid) as PackedScene
 	if not Globals.check(new_battle_scene_packed, "No se ha podido cargar lo que sea esto: %s" % battle_scene_uid):
 		return
 
@@ -168,7 +168,7 @@ func _empty_transition_stack() -> void:
 
 
 func _init_player() -> void:
-	var player_scene: PackedScene = ResourceLoader.load(PLAYER_SCENE_UID, "PackedScene")
+	var player_scene := ResourceLoader.load(PLAYER_SCENE_UID) as PackedScene
 	assert(player_scene != null, "No se ha podido cargar la escena del jugador, ¿por qué?")
 
 	player = player_scene.instantiate() as Player
@@ -183,7 +183,7 @@ func _deferred_load_level(level_scene_uid: String) -> void:
 		_current_level = null
 		await get_tree().process_frame
 
-	var new_level_packed: PackedScene = ResourceLoader.load(level_scene_uid, "PackedScene")
+	var new_level_packed := ResourceLoader.load(level_scene_uid) as PackedScene
 	if not Globals.check(new_level_packed, "No se ha podido cargar lo que sea esto: %s" % level_scene_uid):
 		return
 
