@@ -129,6 +129,8 @@ func exit_battle() -> void:
 
 	await play_transition(BACK_TO_LEVEL_TRANSITION)
 
+	hud_root.show()
+
 	resume_execution()
 
 	world.process_mode = Node.PROCESS_MODE_PAUSABLE
